@@ -26,7 +26,7 @@ onChange = {onCharge}
 
 />
 </label>
-<div className = 'form inputs'>
+
     <label>Email
     <input
 email ='email'
@@ -38,18 +38,7 @@ onChange = {onCharge}
 />
 </label>
 
-<div className = 'form inputs'>
-    <label>Name
-    <input
-name ='name'
-type = 'text'
-placeholder =  'What is your name?'
-maxLength = '30'
-value =  {values.name}
-onChange = {onCharge}
 
-/>
-</label>
 
 <label>Role
 <select value = {values.role} name ='role' onChange = {onCharge}>
@@ -63,8 +52,8 @@ onChange = {onCharge}
           <button>submit</button>
         </div>
 </div>
-</div>
-</div>
+
+
 
 
 

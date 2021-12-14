@@ -25,7 +25,7 @@ const submitForm = () =>{
   const newTeam = {
     username: formValue.name.trim(),
     email: formValue.email.trim(),
-    role: formValue.role.trim
+    role: formValue.role
   }
 
   if (!newTeam.username || !newTeam.email || !newTeam.role){
