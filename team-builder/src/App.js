@@ -1,18 +1,18 @@
-import logo from './logo.svg';
+
 import './App.css';
 import React , {useState , useEffect} from 'react';
 import axios from 'axios';
 import TeamForm  from './Components/Form';
+import Member from './Components/TeamPlayer';
 const initialFormValues = {
-  name: '',
+  username: '',
   email: '',
   role: '',
 }
 
 
 
-
-export default function App() {
+function App() {
   const [teamPlayer , setTeamPlayer ] = useState([]);
   const [formValue, setFormValue] = useState(initialFormValues)
   const [error, setError] = useState('');
@@ -23,11 +23,11 @@ export default function App() {
   }
 const submitForm = () =>{
   const newTeam = {
-    username: formValue.name.trim(),
+    username: formValue.username.trim(),
     email: formValue.email.trim(),
     role: formValue.role
   }
-
+setTeamPlayer(teamPlayer.concat(newTeam));
   if (!newTeam.username || !newTeam.email || !newTeam.role){
     setError('Please fill out all the credentials.')
   } else {
@@ -38,7 +38,9 @@ const submitForm = () =>{
       setFormValue(initialFormValues);
     }).catch(err => console.error(err))
     .finally(() => setError(""))
+ 
   }
+ 
 }
 useEffect(() => {
   axios.get('fakeapi.com').then(res => setTeamPlayer(res.data))
@@ -52,7 +54,13 @@ return(
     values={formValue}
     update={updateForm}
     submit={submitForm}/>
-
+{
+  teamPlayer.map((player,idx)=>{
+    return(
+      <Member key = {idx} details = {player} />
+    )
+  })
+}
 
  </div>
 )
@@ -60,4 +68,4 @@ return(
 
   }
 
-
+  export default App;
